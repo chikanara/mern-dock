@@ -1,0 +1,17 @@
+version: "3"
+services: 
+  web-prod:
+     build:
+      context : .
+      dockerfile : Dockerfile
+      args : 
+        - NODE_ENV:production
+    ports: 
+      - 3000:3000
+    environment: 
+      - PORT=3000
+      - NODE_ENV = production
+    env_file: ./config/.env
+    image: node_image
+    container_name: node_container
+    command : node server

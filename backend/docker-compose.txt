@@ -1,0 +1,39 @@
+version: "3"
+services: 
+  node-app:
+    # build: 
+    #   context: .
+    #   dockerfile: Dockerfile
+    build: .
+    ports: 
+      - 3000:3000
+    volumes:
+      - ./:/app
+      -  /app/node_modules
+      # docker volume ls
+    environment: 
+      - PORT=3000
+      # - NODE_ENV = developement
+    env_file: ./config/.env
+    image: node_image
+    # container_name: node_container
+    # command : npm run dev
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: test
+      MONGO_INITDB_ROOT_PASSWORD: test
+    volumes :
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
+
+
+#docker exec -it continer-name -u "username" -p "password"
+# docker prune volume :delete all unused volume
+
+
+

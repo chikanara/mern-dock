@@ -1,0 +1,57 @@
+version: "3"
+services: 
+  node-app:
+    build:
+      context : .
+      args : 
+        - NODE_ENV:development
+           
+    volumes:
+      - ./:/app
+      -  /app/node_modules
+    environment: 
+      - NODE_ENV = developement
+    command : npm run dev
+
+ # docker volume ls
+
+ # port externe(port machine) : port interne (port container) : http://localhost:port externe/
+
+# printenv show env variable
+
+
+
+
+
+# version: "3"
+# services: 
+#   node-app:
+#     build: 
+#       context: .
+#       dockerfile: Dockerfile.dev
+#     ports: 
+#       - 5000:5000
+#     volumes:
+#       - ./:/app
+#       -  /app/node_modules
+#       # docker volume ls
+#     environment: 
+#       - PORT=3000
+#       - NODE_ENV = developement
+#     env_file: ./config/.env
+#     image: node_image
+#     container_name: node_container
+#     command : npm run dev
+
+#   mongo:
+#     image: mongo
+#     restart: always
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: test
+#       MONGO_INITDB_ROOT_PASSWORD: test
+
+# docker volume ls
+# docker rm node-app -fv
+# docker prune volume
+# docker logs container_name
+
